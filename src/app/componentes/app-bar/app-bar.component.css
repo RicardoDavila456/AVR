@@ -1,0 +1,38 @@
+/* app-bar.component.css */
+.app-bar {
+    /* z-index: 999;
+     position: sticky;
+     top: 0;
+     left: 0;*/
+     width: 100%;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 15px;
+     background-color:rgba(0,0,0,0.9);
+     color: #6BB1E2;
+   }
+   
+   .logo img {
+     max-width: 40px; /* Ajusta el tamaño de la imagen según sea necesario */
+   }
+ 
+   .logo a{
+     margin-left: 15px;
+     font-size: 20px;
+     font-weight: 600;
+     color: #6BB1E2;
+     text-decoration: none;
+     font-family: 'Glass Antiqua', cursive;
+   }
+   
+   .nav-links a {
+     margin-left: 15px;
+     color: #6BB1E2;
+     text-decoration: none;
+     font-family: 'Glass Antiqua', cursive;
+   }
+   
+   .nav-links a:hover {
+     text-decoration: underline;
+   }

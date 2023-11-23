@@ -1,0 +1,128 @@
+.cabezera{
+    width: auto;
+    height: auto;
+    background: url('../../../assets/bannerConsulta.jpg');  
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center center;
+    padding: 20px !important;
+    color: var(--BLANCO);
+    justify-content: center;
+    text-align: center; /* Centra el texto dentro de cada elemento */
+    height: 50vh; /* Ajusta la altura según tus necesidades */
+}
+
+.cabezera::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8));
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.cabezera h1{
+    align-self: center;
+    color: white;
+    font-size: 100px;
+    text-align: center;
+    font-family: 'Glass Antiqua', cursive;
+    font-weight: 800;
+}
+
+.receta{
+    background-color:#BDE3FF ;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 20px!important;
+    height: 100%;
+    gap: 20px;
+    align-items: center center;
+    text-align: center; 
+}
+
+
+.primera-parte img{
+    width: 350px;
+    padding-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.ingredientes{
+    padding: 15px;
+    border: 2px solid black; /* Ancho y color del borde */
+    border-radius: 8px; /* Radio de la esquina para bordes redondeados (opcional) */
+    background-color: white;
+    width: 80%;
+}
+
+.ingredientes li{
+    font-size: 20px;
+    color: black;
+    text-align: left;
+}
+.ingredientes ul{
+    padding-left: 70px;
+    padding-top: 10px;
+}
+
+.ingredientes h1{
+    color: black;
+}
+
+.preparacion{
+    padding: 15px;
+    border: 2px solid black; /* Ancho y color del borde */
+    border-radius: 8px; /* Radio de la esquina para bordes redondeados (opcional) */
+    background-color: white;
+    width: 90%;
+}
+
+.preparacion img{
+    width: 350px;
+    padding-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.preparacion p{
+    font-size: 20px;
+    color: black;
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.preparacion h1{
+    color: black;
+}
+
+.preparacion h2{
+    color: black;
+}
+
+.primera-parte{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.segundo-parte{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
