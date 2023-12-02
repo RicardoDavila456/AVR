@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class WebsocketService {
   private socket: WebSocket;
   private messageSubject: Subject<string> = new Subject<string>();
 
-  constructor() {
+  constructor(private router: Router) {
     this.socket = new WebSocket('ws://localhost:8080');
     this.initializeWebSocket();
   }
@@ -22,24 +23,29 @@ export class WebsocketService {
     this.socket = new WebSocket('ws://localhost:8080');
     this.socket.addEventListener('open', (event) => {
       console.log('Conexión WebSocket abierta:', event);
+      this.socket.addEventListener('message', (event) => {
+        const message = event.data;
+  
+        try {
+          const parsedMessage = JSON.parse(message);
+          console.log('JSON recibido:', parsedMessage);
+          this.messageSubject.next(parsedMessage);
+          localStorage.setItem('RecetaActual', JSON.stringify(parsedMessage));
+          this.router.navigate(['/ConsultaIndividual']).then(() => {
+            window.location.reload();
+          })
+          
+        } catch (error) {
+          console.error('Error al analizar JSON:', error);
+        }
+      });
+      this.sendMessage("recibido");
+      this.socket.addEventListener('close', (event) => {
+        console.log('Conexión WebSocket cerrada:', event);
+        // Puedes implementar lógica de reconexión aquí si es necesario
+      });
     });
-
-    this.socket.addEventListener('message', (event) => {
-      const message = event.data;
-
-      try {
-        const parsedMessage = JSON.parse(message);
-        console.log('JSON recibido:', parsedMessage);
-        this.messageSubject.next(parsedMessage);
-      } catch (error) {
-        console.error('Error al analizar JSON:', error);
-      }
-    });
-
-    this.socket.addEventListener('close', (event) => {
-      console.log('Conexión WebSocket cerrada:', event);
-      // Puedes implementar lógica de reconexión aquí si es necesario
-    });
+    this.reconnectWebSocket();
   }
 
   private reconnectWebSocket(): void {
@@ -64,5 +70,6 @@ export class WebsocketService {
     if (this.socket) {
       this.socket.close();
     }
+    
   }
 }

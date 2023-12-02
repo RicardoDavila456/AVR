@@ -1,37 +1,25 @@
 <section>
     <div class="cabezera">
-        <h1>Lasaña al Horno</h1>
+        <h1>{{receivedMessages[0]["Plato"]["Nombre"]}}</h1>
     </div>
 </section>
 <section class="receta">
     <div class="primera-parte">
-        <img src="../../../assets/lasaña.jpg" alt="">
+        <img src="{{receivedMessages[0]['Ilustraciones'][0]['Direccion']}}" alt="">
         <div class="ingredientes">
             <h1>Ingredientes y Medidas</h1>
             <ul>
-                <li>300 gr. carne magra de ternera</li><br>
-                <li>250 cc crema de leche</li><br>
-                <li>200 gr. de mozzarela</li><br>
-                <li>50 gr. queso rallado parmesano</li><br>
-                <li>50 gr. jamón serrano</li><br>
-                <li>0,5 bote de Sofrito de Tomate y Cebolla Gallina Blanca</li><br>
-                <li>1 paquete de placas de Lasaña Fácil El Pavo</li><br>
-                <li>1 pizca de Avecrem Dúo Guisos de Carne</li><br>
-                <li>1 copita de jerez</li><br>
-                <li>1 pechuga de pollo</li><br>
+                <li *ngFor="let ingrediente of ingredientes">
+                {{ingrediente["Nombre"]}} {{ingrediente["Cantidad"]}} {{ingrediente["UnidadMedidaCantidad"]}} 
+                </li><br>
               </ul>
         </div>
     </div>
     <div class="segundo-parte">
         <div class="preparacion">
             <h1>Preparacion</h1>
-            <img src="../../../assets/preparacion2.jpg" alt="">
-            <h2>Paso Uno:</h2>
-            <p>Hidrata las placas de lasaña, según las instrucciones del envase. Prepara un sofrito con la carne de ternera, la de pollo, el jamón y el sofrito, todo regado con la copita de jerez y sazonado con una pastilla de Avecrem desmenuzada.</p>
-            <h2>Paso Dos:</h2>
-            <p>En una fuente apta para horno, untada con mantequilla, extiende un vaso de crema de leche. Coloca una hilera de lasañas y sobre cada placa, extiende 2 cucharadas de sofrito de carne y unos trozos de mozzarella o queso fundido.</p>
-            <h2>Paso Tres:</h2>
-            <p>Extiende otra hilera de placas de lasaña, y repite el proceso hasta terminar. En la última placa, extiende el resto de la crema de leche y por encima la salsa de carne. Espolvorea con queso parmesano y añade unos trozos pequeños de mantequilla. Gratina en el horno precalentado a 200ºC durante unos 25 minutos.</p>
+            <img src="{{receivedMessages[0]['Ilustraciones'][1]['Direccion']}}" alt="">
+            <p>{{receivedMessages[0]["Plato"]["Preparacion"]}}</p>
         </div>
     </div>
 </section>
